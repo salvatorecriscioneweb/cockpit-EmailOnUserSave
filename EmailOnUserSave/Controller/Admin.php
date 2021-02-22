@@ -40,7 +40,7 @@ class Admin extends \Cockpit\AuthController {
         $this->app->storage->setKey("cockpit/options", 'emailonusersave.settings', $data);
         return json_encode($data);
     }
-    return [];
+    return false;
   }
 
 }
