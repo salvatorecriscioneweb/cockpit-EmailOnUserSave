@@ -1,6 +1,6 @@
 <?php
 
-namespace EmailOnSave\Controller;
+namespace EmailOnUserSave\Controller;
 
 /**
  * Admin class.
@@ -18,12 +18,12 @@ class Admin extends \Cockpit\AuthController {
       ],
     ];
 
-    $settings = $this->app->storage->getKey('cockpit/options', 'emailonsave.settings', $defaultSettings);
+    $settings = $this->app->storage->getKey('cockpit/options', 'emailonusersave.settings', $defaultSettings);
     if (empty($settings)) {
       $settings = $defaultSettings;
     }
 
-    return $this->render('emailonsave:views/settings/index.php', [
+    return $this->render('emailonusersave:views/settings/index.php', [
       'collections' => $collections,
       'settings' => $settings,
     ]);
@@ -31,7 +31,7 @@ class Admin extends \Cockpit\AuthController {
 
   public function save() {
     if ($data = $this->param("settings", false)) {
-        $this->app->storage->setKey("cockpit/options", 'emailonsave.settings', $data);
+        $this->app->storage->setKey("cockpit/options", 'emailonusersave.settings', $data);
         return json_encode($data);
     }
     return [];

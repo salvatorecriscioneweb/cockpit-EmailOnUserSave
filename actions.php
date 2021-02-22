@@ -3,7 +3,7 @@
 
 $app->on('collections.save.after', function ($name, $data) use ($app) {
 
-  $settings = $app->storage->getKey('cockpit/options', 'emailonsave.settings', []);
+  $settings = $app->storage->getKey('cockpit/options', 'emailonusersave.settings', []);
 
   $collections = isset($settings['collections']) ? $settings['collections'] : [];
   $email = isset($settings['email']) ? $settings['email'] : [];
@@ -36,7 +36,7 @@ $app->on('collections.save.after', function ($name, $data) use ($app) {
       'body' => $body,
     ];
 
-    $message = $app->view('emailonsave:emails/onsave.php', $vars);
+    $message = $app->view('emailonusersave:emails/onsave.php', $vars);
 
     $app->mailer->mail(
       $email['to'],
