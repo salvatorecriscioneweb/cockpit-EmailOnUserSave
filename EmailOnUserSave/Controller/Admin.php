@@ -10,12 +10,18 @@ class Admin extends \Cockpit\AuthController {
   public function index() {
     $collections = $this->module('collections')->getCollectionsInGroup();
     $defaultSettings = [
-      'collections' => [],
-      'email' => [
+      'sendOnCreate' => false,
+      'sendOnActive' => false,
+      'emailCreate' => [
         'to' => '',
-        'subject' => 'Collection saved',
-        'body' => "<b>New collection saved</b>\n\n[:data]\n\n\n<hr>\n\n<small>This is an automated email, please don't reply.</small>",
+        'subject' => 'New Account Created',
+        'body' => "<b>Your Account was created</b>\n\n[:data]\n\n\n<hr>\n\n<small>This is an automated email, please don't reply.</small>",
       ],
+      'emailActive' => [
+        'to' => '',
+        'subject' => 'Your account is active',
+        'body' => "<b>Your Account was activated</b>\n\n\n<hr>\n\n<small>This is an automated email, please don't reply.</small>",
+      ]
     ];
 
     $settings = $this->app->storage->getKey('cockpit/options', 'emailonusersave.settings', $defaultSettings);
