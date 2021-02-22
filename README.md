@@ -9,21 +9,18 @@ Extend Cockpit core functionality by sending a customized email when an user is 
 3. If directory is lowercase( emailonusersave ), rename to 'EmailOnUserSave' camelcase.
 4. Access module settings (http://your-cockpit-site/emailonusersave) and confirm that configuration page is loaded
 
+## Screenshot
+
+
+
 ## Configuration
 
 On the configuration page there are 2 main sections, the first, on the left, will provide email specific configurations:
 
-* Email To email value (one email or multiple emails separated by comma)
+* Email To email value (one email or multiple emails separated by comma, can self targetting user)
 * Email Subject text
 * Email Body template, a token string ([:data]) can be used to include the collection data
 
-On the right, there is a list with all available collections, enabling a specific collection will trigger the email every time the collection is saved.
-
-* Missing Screenshot *
-
-Using the default template, an email will render as below:
-
-* Missing Screenshot *
 
 ## Copyright and license
 
