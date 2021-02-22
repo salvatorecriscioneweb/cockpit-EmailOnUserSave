@@ -13,12 +13,12 @@ class Admin extends \Cockpit\AuthController {
       'sendOnCreate' => false,
       'sendOnActive' => false,
       'emailCreate' => [
-        'to' => '',
+        'to' => '[:user_mail]',
         'subject' => 'New Account Created',
         'body' => "<b>Your Account was created</b>\n\n[:data]\n\n\n<hr>\n\n<small>This is an automated email, please don't reply.</small>",
       ],
       'emailActive' => [
-        'to' => '',
+        'to' => '[:user_mail]',
         'subject' => 'Your account is active',
         'body' => "<b>Your Account was activated</b>\n\n\n<hr>\n\n<small>This is an automated email, please don't reply.</small>",
       ]
@@ -35,7 +35,7 @@ class Admin extends \Cockpit\AuthController {
     ]);
   }
 
-  public function save() {
+  public function saveConfig() {
     if ($data = $this->param("settings", false)) {
         $this->app->storage->setKey("cockpit/options", 'emailonusersave.settings', $data);
         return json_encode($data);

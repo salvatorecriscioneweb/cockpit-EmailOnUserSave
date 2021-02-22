@@ -144,9 +144,13 @@
             }
             console.log(settings);
 
-            App.request("/settings/emailonusersave/save", {"settings": settings}).then(function(data) {
+            App.request("/emailonusersave/saveConfig", {"settings": settings}).then(function(data) {
                 console.log(data);
-                App.ui.notify("Email on Save settings saved", "success");
+                if (data) {
+                    App.ui.notify("Email on User Save settings saved", "success");
+                } else {
+                    App.ui.notify("Saving failed.", "danger");
+                }
             });
 
             return false;

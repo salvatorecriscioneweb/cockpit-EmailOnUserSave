@@ -14,6 +14,6 @@
         <div class="uk-text-truncate uk-margin">
             @lang('Email on User Save')
         </div>
-        <a class="uk-position-cover" href="@route('/settings/email-on-user-save')"></a>
+        <a class="uk-position-cover" href="@route('/emailonusersave')"></a>
     </div>
 </div>

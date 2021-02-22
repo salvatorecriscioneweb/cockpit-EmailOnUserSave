@@ -13,6 +13,6 @@ $this->on('cockpit.view.settings.item', function () {
 });
 
 $app->on('admin.init', function () use ($app) {
-  // Bind admin routes /settings/email-on-save.
-  $this->bindClass('EmailOnUserSave\\Controller\\Admin', 'settings/email-on-user-save');
+  // Bind admin routes /emailonusersave.
+  $this->bindClass('EmailOnUserSave\\Controller\\Admin', 'emailonusersave');
 });
