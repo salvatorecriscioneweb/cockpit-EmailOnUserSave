@@ -5,8 +5,9 @@ Extend Cockpit core functionality by sending a customized email when an user is 
 ## Installation
 
 1. Confirm that you have cockpit configured to send emails
-2. Download zip and extract directory 'emailonusersave' to 'your-cockpit-docroot/addons' ( Addon directory should name emailonusersave, now you'll have your-cockpit-docroot/addons/emailonusersave/bootstrap.php )
-3. Access module settings (http://your-cockpit-site/emailonusersave) and confirm that configuration page is loaded
+2. Download zip and extract directory 'EmailOnUserSave' to 'your-cockpit-docroot/addons' ( Addon directory should name EmailOnUserSave, now you'll have your-cockpit-docroot/addons/EmailOnUserSave/bootstrap.php )
+3. If directory is lowercase( emailonusersave ), rename to 'EmailOnUserSave' camelcase.
+4. Access module settings (http://your-cockpit-site/emailonusersave) and confirm that configuration page is loaded
 
 ## Configuration
 
