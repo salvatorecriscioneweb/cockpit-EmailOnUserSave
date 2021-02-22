@@ -11,7 +11,7 @@ Extend Cockpit core functionality by sending a customized email when an user is 
 
 ## Screenshot
 
-
+![Setting](https://raw.githubusercontent.com/salvatorecriscioneweb/cockpit-EmailOnUserSave/master/screenshot/SaveOnUser.PNG)
 
 ## Configuration
 
