@@ -1,6 +1,6 @@
 <div>
     <ul class="uk-breadcrumb">
-        <li class="uk-active"><span>@lang('EmailOnSave Settings')</span></li>
+        <li class="uk-active"><span>@lang('EmailOnUserSave Settings')</span></li>
     </ul>
 </div>
 
@@ -91,7 +91,7 @@
             }
             console.log(settings);
 
-            App.request("/emailonsave/save", {"settings": settings}).then(function(data) {
+            App.request("/emailonusersave/save", {"settings": settings}).then(function(data) {
                 console.log(data);
                 App.ui.notify("Email on Save settings saved", "success");
             });
