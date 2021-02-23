@@ -8,7 +8,6 @@ namespace EmailOnUserSave\Controller;
 class Admin extends \Cockpit\AuthController {
 
   public function index() {
-    $collections = $this->module('collections')->getCollectionsInGroup();
     $defaultSettings = [
       'sendOnCreate' => false,
       'sendOnActive' => false,
@@ -30,7 +29,6 @@ class Admin extends \Cockpit\AuthController {
     }
 
     return $this->render('emailonusersave:views/settings/index.php', [
-      'collections' => $collections,
       'settings' => $settings,
     ]);
   }

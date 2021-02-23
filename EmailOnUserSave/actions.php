@@ -1,8 +1,23 @@
 <?php
 
+$app->on('cockpit.accounts.active', function ($name, $data) use ($app) {
+  $settings = $app->storage->getKey('cockpit/options', 'emailonusersave.settings', []);
+  
+  if ( $settings['sendOnActive']) {
+    // Send Active Email
+  }
+});
 
+$app->on('cockpit.accounts.create', function ($name, $data) use ($app) {
+  $settings = $app->storage->getKey('cockpit/options', 'emailonusersave.settings', []);
+  
+  if ($settings['sendOnCreate']) {
+    // Send Create Email
+  }
+});
+
+/*
 $app->on('collections.save.after', function ($name, $data) use ($app) {
-
   $settings = $app->storage->getKey('cockpit/options', 'emailonusersave.settings', []);
 
   $collections = isset($settings['collections']) ? $settings['collections'] : [];
@@ -46,3 +61,4 @@ $app->on('collections.save.after', function ($name, $data) use ($app) {
 
   }
 });
+*/

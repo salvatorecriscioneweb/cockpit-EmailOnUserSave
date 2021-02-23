@@ -4,9 +4,9 @@
     </ul>
 </div>
 
-@if (empty($collections))
+@if (empty($accounts))
 <div class="uk-text-large uk-text-center uk-margin-large-top uk-text-muted">
-    <p>@lang('No collections found')</p>
+    <p>@lang('No Users found')</p>
 </div>
 @endif
 
@@ -84,6 +84,17 @@
                 </div>
             </div>
         </div>
+        <!-- 
+        <pre>
+            <div class="uk-width-small-1-4">
+                <div ref="container" class="uk-form-row" each="{user, index in accounts}">
+                    <div class="">
+                        <p>{ user }</p>
+                    </div>
+                </div>
+            </div>
+        </pre>
+        -->
         <!--
         <div class="uk-width-small-1-4">
             <h3>Collections</h3>
