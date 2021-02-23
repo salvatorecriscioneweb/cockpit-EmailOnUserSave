@@ -13,11 +13,11 @@ Extend Cockpit core functionality by sending a customized email when an user is 
 
 Due lacks of events ( triggers ) by official cockpit, you need the patched Accounts that have 'cockpit.accounts.active' and 'cockpit.accounts.create' triggers.
 
-[Accounts.php](https://github.com/salvatorecriscioneweb/cockpit-useful-scripts-addons/blob/main/trigger-on-user-active/Accounts.php)
+[modules/Cockpit/Controller/Accounts.php (patched)](https://github.com/salvatorecriscioneweb/cockpit-useful-scripts-addons/blob/main/trigger-on-user-active/Accounts.php)
 
-or you can patch by yourself
+or you can patch by yourself file `modules/Cockpit/Controller/Accounts.php`
 
-add these lines before `$this->app->storage->save('cockpit/accounts', $data);`
+add these lines just before `$this->app->storage->save('cockpit/accounts', $data);`
 
 ```
 if (isset($data['active'])) {
@@ -49,6 +49,4 @@ On the configuration page there are 2 main sections, the first, on the left, wil
 
 ## Copyright and license
 
-Copyright 2018 pauloamgomes under the MIT license.
-
-Edited by salvatorecriscioneweb 2021 accordingly the MIT license.
+Copyright 2021 salvatorecriscioneweb 2021 accordingly the MIT license.
