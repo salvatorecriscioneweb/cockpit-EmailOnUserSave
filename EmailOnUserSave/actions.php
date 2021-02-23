@@ -39,7 +39,7 @@ $app->on('cockpit.accounts.active', function ($name, $data) use ($app) {
       $message = $app->view('emailonusersave:emails/onsave.php', $vars);
 
       $app->mailer->mail(
-        $email['to'],
+        $to,
         $subject,
         $message
       );
@@ -86,7 +86,7 @@ $app->on('cockpit.accounts.create', function ($name, $data) use ($app) {
       $message = $app->view('emailonusersave:emails/onsave.php', $vars);
 
       $app->mailer->mail(
-        $email['to'],
+        $to,
         $subject,
         $message
       );
