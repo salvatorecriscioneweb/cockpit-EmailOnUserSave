@@ -20,6 +20,7 @@ or you can patch by yourself file `modules/Cockpit/Controller/Accounts.php`
 add these lines just before `$this->app->storage->save('cockpit/accounts', $data);`
 
 ```
+
 if (isset($data['active'])) {
     $_account = $this->app->storage->findOne('cockpit/accounts', ['email'  => $data['email']]);
 
@@ -32,6 +33,7 @@ if (isset($data['active'])) {
 if ($data['_created'] == $data['_modified']) {
     $this->app->trigger('cockpit.accounts.create', [&$data, isset($data['_id'])]);
 }
+
 ```
 
 ## Screenshot
@@ -49,4 +51,4 @@ On the configuration page there are 2 main sections, the first, on the left, wil
 
 ## Copyright and license
 
-Copyright 2021 salvatorecriscioneweb 2021 accordingly the MIT license.
+Copyright 2021 salvatorecriscioneweb accordingly the MIT license.
