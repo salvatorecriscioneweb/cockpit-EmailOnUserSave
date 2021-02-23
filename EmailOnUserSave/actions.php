@@ -54,7 +54,7 @@ $app->on('cockpit.accounts.create', function ($name, $data) use ($app) {
     $email = isset($settings['emailCreate']) ? $settings['emailCreate'] : [];
 
     if (!empty($email['to'])) {
-      $to = $email['to']
+      $to = $email['to'];
       $to = str_replace('[:user_mail]', $name['email'], $to);
       $subject = !empty($email['subject']) ? $email['subject'] : 'New collection saved';
       $body = isset($email['body']) ? $email['body'] : '';
