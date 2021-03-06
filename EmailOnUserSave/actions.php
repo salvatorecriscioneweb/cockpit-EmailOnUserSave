@@ -1,6 +1,6 @@
 <?php
 
-$app->on('cockpit.accounts.active', function ($name, $data) use ($app) {
+$app->on('cockpit.accounts.active', function ($data, $_) use ($app) {
   $settings = $app->storage->getKey('cockpit/options', 'emailonusersave.settings', []);
   
   if ( $settings['sendOnActive'] ) {
@@ -8,30 +8,12 @@ $app->on('cockpit.accounts.active', function ($name, $data) use ($app) {
 
     if (!empty($email['to'])) {
       $to = $email['to'];
-      $to = str_replace('[:user_mail]', $name['email'], $to);
-      $subject = !empty($email['subject']) ? $email['subject'] : 'New collection saved';
+      $to = str_replace('[:user_mail]', $data['email'], $to);
+      $subject = !empty($email['subject']) ? $email['subject'] : 'New Account';
       $body = isset($email['body']) ? $email['body'] : '';
 
-      $dataHtml = "<br><hr><br>\n";
-      foreach ($data as $key => $value) {
-        $dataHtml .= '<div class="field">';
-        $dataHtml .= "<div><b>${key}:</b></div>\n";
-        if ($key === '_modified' || $key === '_created') {
-          $value = date('Y-m-d H:i', $value);
-        }
-        if (is_string($value)) {
-          $dataHtml .= "<div>${value}</div>\n";
-        }
-        else {
-          $dataHtml .= "<pre>" . json_encode($value) . "</pre>\n";
-        }
-        $dataHtml .= "</div>\n";
-      }
-
-      $body = str_replace('[:data]', $dataHtml, $body);
-
       $vars = [
-        'name' => $name,
+        'name' => '',
         'app' => $app,
         'body' => $body,
       ];
@@ -47,7 +29,7 @@ $app->on('cockpit.accounts.active', function ($name, $data) use ($app) {
   }
 });
 
-$app->on('cockpit.accounts.create', function ($name, $data) use ($app) {
+$app->on('cockpit.accounts.create', function ($data, $_) use ($app) {
   $settings = $app->storage->getKey('cockpit/options', 'emailonusersave.settings', []);
   
   if ($settings['emailCreate'] ) {
@@ -55,30 +37,32 @@ $app->on('cockpit.accounts.create', function ($name, $data) use ($app) {
 
     if (!empty($email['to'])) {
       $to = $email['to'];
-      $to = str_replace('[:user_mail]', $name['email'], $to);
-      $subject = !empty($email['subject']) ? $email['subject'] : 'New collection saved';
+      $to = str_replace('[:user_mail]', $data['email'], $to);
+      $subject = !empty($email['subject']) ? $email['subject'] : 'New Account saved';
       $body = isset($email['body']) ? $email['body'] : '';
 
-      $dataHtml = "<br><hr><br>\n";
+      $dataHtml = "<br><p>Account data:</p><hr><br>\n";
       foreach ($data as $key => $value) {
-        $dataHtml .= '<div class="field">';
-        $dataHtml .= "<div><b>${key}:</b></div>\n";
-        if ($key === '_modified' || $key === '_created') {
-          $value = date('Y-m-d H:i', $value);
+        if ( $key != 'password' ) {
+          $dataHtml .= '<div class="field">';
+          $dataHtml .= "<div><b>${key}:</b></div>\n";
+          if ($key === '_modified' || $key === '_created') {
+            $value = date('Y-m-d H:i', $value);
+          }
+          if (is_string($value)) {
+            $dataHtml .= "<div>${value}</div>\n";
+          }
+          else {
+            $dataHtml .= "<pre>" . json_encode($value) . "</pre>\n";
+          }
+          $dataHtml .= "</div>\n";
         }
-        if (is_string($value)) {
-          $dataHtml .= "<div>${value}</div>\n";
-        }
-        else {
-          $dataHtml .= "<pre>" . json_encode($value) . "</pre>\n";
-        }
-        $dataHtml .= "</div>\n";
       }
 
       $body = str_replace('[:data]', $dataHtml, $body);
 
       $vars = [
-        'name' => $name,
+        'name' => '',
         'app' => $app,
         'body' => $body,
       ];

@@ -4,11 +4,6 @@
     </ul>
 </div>
 
-@if (empty($accounts))
-<div class="uk-text-large uk-text-center uk-margin-large-top uk-text-muted">
-    <p>@lang('No Users found')</p>
-</div>
-@endif
 
 <div class="uk-margin-top uk-invisible" if="{collections}" riot-view>
 
@@ -62,10 +57,11 @@
                                 <label class="uk-text-small">@lang('To')</label>
                                 <input class="uk-width-1-1 uk-form-large" type="text" bind="settings.emailActive.to" autocomplete="off" required>
                             </div>
-
+                            <!--
                             <div class="uk-form-row">
                                 <div class="uk-alert">@lang('Use token [:user_mail] in the field to replace with user mail. You can insert more emails separing with comma.')</div>
                             </div>
+                            -->
 
                             <div class="uk-form-row">
                                 <label class="uk-text-small">@lang('Subject')</label>
